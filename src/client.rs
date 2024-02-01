@@ -1,11 +1,16 @@
 // #![cfg(feature = "rustls")]
 
 use clap::Parser;
-use quinn::{ClientConfig, Endpoint, VarInt};
+use quinn::{ClientConfig, Endpoint, EndpointConfig, VarInt};
 use std::{error::Error, net::SocketAddr, net::ToSocketAddrs, sync::Arc};
 use tokio::io::{AsyncReadExt, AsyncWriteExt};
 use tokio::signal::unix::{signal, SignalKind};
 use url::Url;
+
+use crate::unbound_udpsocket::unbound_udpsocket;
+use crate::util::IpAddrKind;
+
+
 
 #[allow(unused_imports)]
 use log::{debug, error, info, trace, warn, Level};
@@ -71,43 +76,73 @@ fn configure_client() -> Result<ClientConfig, Box<dyn Error>> {
     Ok(client_config)
 }
 
+fn own_runtime() -> Option<quinn::TokioRuntime> {
+    if ::tokio::runtime::Handle::try_current().is_ok() {
+        return Some(quinn::TokioRuntime{});
+    }
+    None
+}
+
+fn unbound_client(kind: IpAddrKind) -> std::io::Result<Endpoint> {
+    let socket:std::net::UdpSocket = unbound_udpsocket(kind)?;
+    let runtime=own_runtime()
+        .ok_or_else(|| std::io::Error::new(std::io::ErrorKind::Other, "failed to create unique runtime"))?;
+    Endpoint::new(
+        EndpointConfig::default(),
+        None,
+        socket,
+        runtime,
+    )
+}
+
 /// Constructs a QUIC endpoint configured for use a client only.
 ///
 /// ## Args
 ///
 /// - server_certs: list of trusted certificates.
 #[allow(unused)]
-pub fn make_client_endpoint(bind_addr: SocketAddr) -> Result<Endpoint, Box<dyn Error>> {
+pub fn make_bound_client_endpoint(bind_addr: SocketAddr) -> Result<Endpoint, Box<dyn Error>> {
     let client_cfg = configure_client()?;
     let mut endpoint = Endpoint::client(bind_addr)?;
     endpoint.set_default_client_config(client_cfg);
     Ok(endpoint)
 }
 
+pub fn make_unbound_client_endpoint(kind: IpAddrKind) -> Result<Endpoint, Box<dyn Error>> {
+    let client_cfg = configure_client()?;
+    let mut endpoint = unbound_client(kind)?;
+    endpoint.set_default_client_config(client_cfg);
+    Ok(endpoint)
+}
+
 #[tokio::main]
 pub async fn run(options: Opt) -> Result<(), Box<dyn Error>> {
+    //validate quic
     let url = options.url;
     if url.scheme() != "quic" {
         return Err("URL scheme must be quic".into());
     }
 
+    // create remote socket addr
     let remote = (url.host_str().unwrap(), url.port().unwrap_or(4433))
         .to_socket_addrs()?
         .next()
         .ok_or("couldn't resolve to an address")?;
 
     info!("[client] Connecting to {:?}", remote);
-
-    let endpoint = make_client_endpoint(match options.bind_addr {
+    // create local socket addr
+    // when no bind_addr specified, then create socket without binding
+    let endpoint = match options.bind_addr {
         None => if remote.is_ipv6() {
-            "[::]:0"
+            make_unbound_client_endpoint(IpAddrKind::V6)
+            //SocketAddr::V4(SocketAddrV4::new(Ipv4Addr::UNSPECIFIED,0))
         } else {
-            "0.0.0.0:0"
+            make_unbound_client_endpoint(IpAddrKind::V4)
+            //SocketAddr::V6(SocketAddrV6::new(Ipv6Addr::UNSPECIFIED,0,0,0))
         }
-        .parse()
-        .unwrap(),
-        Some(local) => local,
-    })?;
+        Some(local) => make_bound_client_endpoint(local),
+    }?;
+
     // connect to server
     let connection = endpoint
         .connect(remote, url.host_str().unwrap_or("localhost"))

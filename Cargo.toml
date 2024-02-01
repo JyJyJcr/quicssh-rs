@@ -18,3 +18,5 @@ rustls-pemfile = "1.0.2"
 rcgen = "0.10.0"
 log = { version = "0.4", features = ["std", "serde"] }
 env_logger = "0.11.1"
+cvt = "0.1.2"
+libc = "0.2.153"
