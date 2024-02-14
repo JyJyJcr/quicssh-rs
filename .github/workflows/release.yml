@@ -28,7 +28,7 @@ jobs:
           # - x86_64-unknown-illumos - weird error compiling openssl - "bin/sh: 1: granlib: not found"
 
           - os_name: FreeBSD-x86_64
-            os: ubuntu-22.04
+            os: macos-latest
             target: x86_64-unknown-freebsd
             bin: quicssh-rs
             name: quicssh-FreeBSD-x86_64.tar.gz
