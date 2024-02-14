@@ -74,15 +74,15 @@ jobs:
         if: contains(matrix.platform.name, 'musl')
       - name: Check glibc version
         run: strings /lib/x86_64-linux-gnu/libc.so.6 | grep GLIBC
-    # comment out to test environment
-    #   - name: Build binary
-    #     uses: houseabsolute/actions-rust-cross@v0
-    #     with:
-    #       command: "build"
-    #       target: ${{ matrix.platform.target }}
-    #       toolchain: ${{ matrix.toolchain }}
-    #       args: "--locked --release"
-    #       strip: true
+      - name: Build binary
+        uses: houseabsolute/actions-rust-cross@v0
+        with:
+          command: "build"
+          target: ${{ matrix.platform.target }}
+          toolchain: ${{ matrix.toolchain }}
+          args: "--locked --release"
+          strip: true
+    # comment out
     #   - name: Package as archive
     #     shell: bash
     #     run: |
