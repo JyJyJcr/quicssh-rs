@@ -1,0 +1,56 @@
+Origin: https://github.com/oowl/quicssh-rs
+Label: quicssh-rs
+Suite: stable
+Codename: stable
+Date: Fri, 19 Apr 2024 07:50:01 UTC
+Architectures: i386 amd64 armel armhf arm64
+Components: main
+Description: The Debian repository for quicssh-rs
+MD5Sum:
+ 6aac9a1545497185a423c3e60793c2ec 606 main/binary-i386/Packages
+ d5e88dca9e0d26db0a0a4c4c6262693c 435 main/binary-i386/Packages.gz
+ c83c38c8cf8f95e577fa634361f8f6f0 162 main/binary-i386/Release
+ 0a7c12a2064ac83325fb629e9b482429 607 main/binary-amd64/Packages
+ b69c2c1a13e353c55044f85e20b9db8e 435 main/binary-amd64/Packages.gz
+ 44b5f054671666d580b298776ef0f046 163 main/binary-amd64/Release
+ 4f4c98cf5c383e49fb20a22a2c046565 608 main/binary-armel/Packages
+ bec4de52bfe393a21cba4d2dfee33be5 436 main/binary-armel/Packages.gz
+ 5c39a40f49a4c27e7d9857c9586a13f9 163 main/binary-armel/Release
+ 19a53ec5da8686ef857c32e3902cf702 608 main/binary-armhf/Packages
+ bb939fc1f02b75d01077c8c49610466d 437 main/binary-armhf/Packages.gz
+ 95aefbbab08406afb7a2caba981d223b 163 main/binary-armhf/Release
+ be2776c07cd9aefe167dab56d03c539c 608 main/binary-arm64/Packages
+ 5df3a68c1f82d60d53f33055217cc9dc 435 main/binary-arm64/Packages.gz
+ 83e632d9241503886fc767a6886ae31a 163 main/binary-arm64/Release
+SHA1:
+ d922374c3df95249d6f0170d88ae6c3a6e566ec4 606 main/binary-i386/Packages
+ 4de555abd0e080720720d20d5cc111850151b8da 435 main/binary-i386/Packages.gz
+ 0f770874f0c1a5f8320b13a3a341b96fb74147ba 162 main/binary-i386/Release
+ 50df4f49bdc81ae8c1d93f0ed647f673abfb57bf 607 main/binary-amd64/Packages
+ fa172f5b69fcec59b19b8d5f74034283296f570b 435 main/binary-amd64/Packages.gz
+ aea5137872b81be64f805ba409844ce288fb7c1b 163 main/binary-amd64/Release
+ 95aa366341811d23c34689ff40f97b346c0c3cf3 608 main/binary-armel/Packages
+ ea4cb630dd9ac1710e175a49deaa71186a4d9c57 436 main/binary-armel/Packages.gz
+ 89f6b58d94658293077a87c9cc745b4fece1863a 163 main/binary-armel/Release
+ 34d52688d1ff6f056fdc2ff098f49ef3d8919715 608 main/binary-armhf/Packages
+ 5f1927ecd895a9139adefb7f324b272317658ad1 437 main/binary-armhf/Packages.gz
+ b49b0693dcca1c56f15d50e8afdda440df74c83d 163 main/binary-armhf/Release
+ c000a6a28dd422948969193be6c304611d84e102 608 main/binary-arm64/Packages
+ 3a8c9bdb056499e47b51a12a8b2448daabc28c48 435 main/binary-arm64/Packages.gz
+ 13be2828813f98f7d9fe07a393dd32ad6077ec90 163 main/binary-arm64/Release
+SHA256:
+ 2956731096bcf13b1ebcf9b7333004cdf6af6b90319475cadd278c714c8938ed 606 main/binary-i386/Packages
+ b1df0bb0b22579fc0be017eccefcb2ad89f17694c657253c003489775bddbe8e 435 main/binary-i386/Packages.gz
+ 08c27e2f9e237ac277876fabefa2334bfff30cb684deb4d2c0d532c65a832e8c 162 main/binary-i386/Release
+ 416085951d38c904d630bcce9693382edd4d1b114a7dac0ade8ed499c2f7e7c5 607 main/binary-amd64/Packages
+ 8465bfa825430a56b2d51a80134d4fb7ec1ad5a7d4000744bcc2f7687a740ae8 435 main/binary-amd64/Packages.gz
+ 2e44d6361b2fabfcd74ca66a92cdf5badffec615bb55b97fed8de449eee70b3e 163 main/binary-amd64/Release
+ 90119a44eedf0823c6efd18ccd30bfa7f754169f69bc32e0e8e3beec2c891dca 608 main/binary-armel/Packages
+ 4c524fff8a042d7e0b37ad08d9e9f3829ec90206a574f8653765cb14d927859d 436 main/binary-armel/Packages.gz
+ 4c45716ce131ef4c3682350fd6c69cd2120b3ccb0f33152cc38e5adcc580059c 163 main/binary-armel/Release
+ e0a1973803b171ad4fe8023390c68577eee0ce2f9ee367ba4cca7a7cf9d331b1 608 main/binary-armhf/Packages
+ 6618244e52798ef4ffd2d047b46d18da2efc5140eaca5952410e57116f9ac114 437 main/binary-armhf/Packages.gz
+ fab063c01fcb74adaad543638315e0307d1c9db627dc2c3eaf3155ba2ac44672 163 main/binary-armhf/Release
+ 5887a2cb3b98b35eecf0c59b6a7b540f343a0390ca92495e6e61d64810f68673 608 main/binary-arm64/Packages
+ 42420671dd35861cf43251e5f358bdf26f59d9b70699894b1029b2ed1c831ad1 435 main/binary-arm64/Packages.gz
+ 63318d148dd1d72f11c5f2d6bf3bbe2aae7a720d76ebbb584ff476b4dbaa7534 163 main/binary-arm64/Release

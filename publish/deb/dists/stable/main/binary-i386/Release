@@ -1,0 +1,6 @@
+Archive: stable
+Component: main
+Origin: https://github.com/oowl/quicssh-rs
+Label: quicssh-rs
+Architecture: i386
+Description: The Debian repository for quicssh-rs

@@ -1,0 +1,17 @@
+Package: quicssh-rs
+Version: 0.1.5-1
+Architecture: armhf
+Maintainer: oowl <ouyangjun1999@gmail.com>
+Installed-Size: 11024
+Suggests: openssh-server
+Priority: optional
+Section: net
+Filename: pool/main/q/quicssh-rs/quicssh-rs_0.1.5-1_armhf.deb
+Size: 2759016
+SHA256: d3edcbaf8036a8b8d88bb71e276e4e40b0537076fc208e926d6a1aef6a56b03f
+SHA1: b68be111db5cb7d2441176584598f43a35b26e42
+MD5sum: b3a5d37c3e13c9d56e590bb17490c2eb
+Description: A simple ssh server based on quic protocol
+ :) quicssh-rs is a QUIC proxy that allows to use QUIC to connect to an SSH
+ server without needing to patch the client or the server.
+
